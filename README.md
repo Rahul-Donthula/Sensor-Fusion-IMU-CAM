@@ -100,16 +100,3 @@ timestamp,event_type
 
 ---
 
-## License
-This project is licensed under the MIT License.
-
----
-
-## Contributing
-Feel free to open issues or submit pull requests to enhance the project.
-
----
-
-## Contact
-For questions or collaboration, reach out via GitHub or email at **rahuldonthula@gmail.com**.
-
