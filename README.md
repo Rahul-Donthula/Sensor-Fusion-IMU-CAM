@@ -74,29 +74,62 @@ make
 ./SensorFusion
 ```
 
-###**Data Formats
-'''sh
-Camera Data (task_cam_data.json)
-'''
+## Data Formats
+
+### **Camera Data (task_cam_data.json)**
+```sh
+[
+  {
+    "cam_<ID>": {
+      "frame_id": "12604",
+      "timestamp": "YYYY-MM-DD HH:MM:SS.sss",
+      "area": [1,2],
+      "object_classes": ["forklift"],
+      "bboxes": [[x1,y1,x2,y2]],
+      "object_positions_x_y": [[x,y]],
+      "object_area": [1],
+      "object_ids": [<unique_sensor_specific_id>],
+      "object_confidences": [0.0],
+      "object_association_ids": [0],
+      "vest_flags": [false]
+    }
+  }
+]
+```
+### **IMU Data (task_imu.csv)**
+```sh
+timestamp,heading,status,acceleration
+2025-03-14T11:56:45.033,285.4,DRIVING,0.12
+2025-03-14T11:56:45.034,287.1,STATIONARY,0.0
+```
 
 
 ### **Expected Output (Terminal Log)**
 ```sh
-Processed event: sensor at 1710303020
-Processed event: imu at 1710303021
-Processed event: sensor at 1710303025
-Processed event: imu at 1710303030
-Output written to: ../data/output.csv
+CSV file fused_data.csv written successfully.
 ```
 
-### **Output CSV (`output.csv`)**
-```
-timestamp,event_type
-1710303020,sensor
-1710303021,imu
-1710303025,sensor
-1710303030,imu
+### **Fused Data (`fused_data.csv`)**
+```sh
+timestamp,cluster_id,positions,filtered_heading,status,sensor_ids
+2025-03-14 12:00:35,1000,"[311,1197]",359.091,STANDING,"cam_141"
+2025-03-14 12:01:04,1001,"[522,1522]",187.619,STANDING,"cam_142"
+2025-03-14 12:00:00,1002,"[332,1282]",126.774,STANDING,"cam_151"
 ```
 
 ---
+## Troubleshooting
+
+Ensure input files exist in the data/ directory.
+
+Check file permissions for reading and writing.
+
+If the compiled binary fails, rebuild using:
+```sh
+rm -rf build && mkdir build && cd build
+cmake ..
+make
+```
+
+
 
