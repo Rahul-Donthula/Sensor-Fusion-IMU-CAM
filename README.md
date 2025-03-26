@@ -53,7 +53,7 @@ SensorFusion/
 ### **Build Instructions**
 ```sh
 # Clone repository
-git clone https://github.com/yourusername/SensorFusion.git
+git clone https://github.com/Rahul-Donthula/SensorFusion.git
 cd SensorFusion
 
 # Create and navigate to build directory
